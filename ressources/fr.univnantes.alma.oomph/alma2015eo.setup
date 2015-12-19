@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setup:Project
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:git="http://www.eclipse.org/oomph/setup/git/1.0"
+    xmlns:jdt="http://www.eclipse.org/oomph/setup/jdt/1.0"
+    xmlns:predicates="http://www.eclipse.org/oomph/predicates/1.0"
+    xmlns:projects="http://www.eclipse.org/oomph/setup/projects/1.0"
+    xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
+    xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
+    xmlns:setup.workingsets="http://www.eclipse.org/oomph/setup/workingsets/1.0"
+    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/projects/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Projects.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupWorkingSets.ecore"
+    name="alma2015eo"
+    label="ALMA 2015 EO">
+  <setupTask
+      xsi:type="jdt:JRETask"
+      version="JavaSE-1.6"
+      location="${jre.location-1.6}">
+    <description>Define the JRE needed to compile and run the Java projects of ${scope.project.label}</description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup.p2:P2Task">
+     <requirement
+        name="net.sf.eclipsecs.feature.group"/>
+     <requirement
+        name="edu.umd.cs.findbugs.plugin.eclipse.feature.group"/>
+    <repository
+        url="http://download.eclipse.org/releases/mars"/>
+    <repository
+        url="http://eclipse-cs.sf.net/update"/>
+     <repository
+         url="http://findbugs.cs.umd.edu/eclipse"/>
+     <repository
+        url="http://eclipse-cs.sourceforge.net/update/"/>
+    <description>Install the tools needed in the IDE to work with the source code for ${scope.project.label}</description>
+  </setupTask>
+  <setupTask
+      xsi:type="git:GitCloneTask"
+      id="git.clone.alma2015eo"
+      remoteURI="https://github.com/alma2015eo/alma2015eo.git"
+      pushURI="">
+    <description>${scope.project.label}</description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup.workingsets:WorkingSetTask"
+      id="">
+    <workingSet
+        name="Resources"
+        id="fr.univnantes.alma.oomph.workingset">
+      <predicate
+          xsi:type="predicates:RepositoryPredicate"
+          project="fr.univnantes.alma.oomph"/>
+    </workingSet>
+    <description>The dynamic working sets for ${scope.project.label}</description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:PreferenceTask"
+      key="/instance/org.eclipse.pde.api.tools/missing_default_api_profile"
+      value="Ignore">
+    <description>Ignore &quot;Plug-in Development/API Baselines&quot;</description>
+  </setupTask>
+  <setupTask
+      xsi:type="projects:ProjectsImportTask"
+      id="fr.univnantes.alma.project.import">
+    <sourceLocator
+        rootFolder="${git.clone.alma2015eo.location}"/>
+    <description>Import the project in the workspace</description>
+  </setupTask>
+  <stream name="master"
+      label=""/>
+  <logicalProjectContainer
+      xsi:type="setup:ProjectCatalog"
+      href="index:/org.eclipse.setup#//@projectCatalogs[name='org.eclipse']"/>
+  <description>Work for the project management class</description>
+</setup:Project>
