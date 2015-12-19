@@ -21,11 +21,12 @@
   </setupTask>
   <setupTask
       xsi:type="setup.p2:P2Task">
-     <requirement
+ 
+	<requirement
         name="net.sf.eclipsecs.feature.group"/>
      <requirement
         name="edu.umd.cs.findbugs.plugin.eclipse.feature.group"/>
-    <repository
+   <repository
         url="http://download.eclipse.org/releases/mars"/>
     <repository
         url="http://eclipse-cs.sf.net/update"/>
