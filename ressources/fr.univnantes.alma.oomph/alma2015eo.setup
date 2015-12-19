@@ -26,9 +26,6 @@
         name="net.sf.eclipsecs.feature.group"/>
      <requirement
         name="edu.umd.cs.findbugs.plugin.eclipse.feature.group"/>
- 
-  
- 
     <requirement
         name="fr.obeo.releng.targetplatform-feature.feature.group"/>
     <repository
