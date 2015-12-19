@@ -21,19 +21,13 @@
   </setupTask>
   <setupTask
       xsi:type="setup.p2:P2Task">
- 
-	<requirement
+     <requirement
         name="net.sf.eclipsecs.feature.group"/>
      <requirement
         name="edu.umd.cs.findbugs.plugin.eclipse.feature.group"/>
-   <repository
-        url="http://download.eclipse.org/releases/mars"/>
     <repository
-        url="http://eclipse-cs.sf.net/update"/>
-     <repository
-         url="http://findbugs.cs.umd.edu/eclipse"/>
-     <repository
-        url="http://eclipse-cs.sourceforge.net/update/"/>
+        url="http://download.eclipse.org/releases/mars"/>
+   
     <description>Install the tools needed in the IDE to work with the source code for ${scope.project.label}</description>
   </setupTask>
   <setupTask
