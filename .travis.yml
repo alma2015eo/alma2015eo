@@ -6,6 +6,6 @@ deploy:
   file_glob: true
   file: bundles/fr.univnantes.alma.repository/target/products/ALMAServer-*.zip
   on:
-repo: masters-info-nantes/commit-or-not-commit
+repo: alma2015eo/alma2015eo
 tags: true
 all_branches: false
