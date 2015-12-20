@@ -33,6 +33,7 @@ name="alma2015eo"
         name="edu.umd.cs.findbugs.plugin.eclipse.feature.group"/>
     <requirement
         name="fr.obeo.releng.targetplatform-feature.feature.group"/>
+    <requirement  name="org.eclipse.xtext.sdk.feature.group"/>
     <repository
  
         url="http://download.eclipse.org/releases/mars"/>
